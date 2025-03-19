@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const { swaggerUi, swaggerSpec } = require('./swagger');
 const studentRoutes = require('./routes/studentRoutes');
+const playerRoutes = require('./routes/playerRoutes');
 
 const port = process.env.PORT || 3000;
 
@@ -16,6 +17,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use('/student', studentRoutes);
+app.use('/player', playerRoutes);
 
 // Connect to the database and start the server
 connectDB().then(() => {

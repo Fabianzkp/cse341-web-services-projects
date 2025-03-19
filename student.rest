@@ -10,7 +10,7 @@ Accept: application/json
 
 ###
 
-# Create multiple students
+# Create multiple or single students
 POST http://localhost:3000/student
 Content-Type: application/json
 
@@ -21,7 +21,7 @@ Content-Type: application/json
     "favoriteSubject": "Agriculture",
     "grade": "B+",
     "email": "timo@example.com"
-  }
+}
 
 ###
 
@@ -37,5 +37,5 @@ Content-Type: application/json
 ###
 
 # Delete a student by ID
-DELETE http://localhost:3000/student/67db39cd3ceef80d58143435
+DELETE http://localhost:3000/student/67db482da595bbf1e685a7c9
 Accept: application/json

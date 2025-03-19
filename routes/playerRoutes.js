@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const studentController = require('../controllers/studentController');
-const { studentValidationRules, validate } = require('../controllers/validator');
+const playerController = require('../controllers/playerController');
+const { playerValidationRules, validate } = require('../controllers/validator');
 
 /**
  * @swagger
- * /student:
+ * /player:
  *   get:
- *     summary: Retrieve a list of students
+ *     summary: Retrieve a list of players
  *     responses:
  *       200:
- *         description: A list of students
+ *         description: A list of players
  *         content:
  *           application/json:
  *             schema:
@@ -18,35 +18,35 @@ const { studentValidationRules, validate } = require('../controllers/validator')
  *               items:
  *                 type: object
  */
-router.get('/', studentController.getStudents);
+router.get('/', playerController.getPlayers);
 
 /**
  * @swagger
- * /student/{id}:
+ * /player/{id}:
  *   get:
- *     summary: Retrieve a single student by ID
+ *     summary: Retrieve a single player by ID
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The student ID
+ *         description: The player ID
  *     responses:
  *       200:
- *         description: A single student
+ *         description: A single player
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  */
-router.get('/:id', studentValidationRules(), validate, studentController.getStudentById);
+router.get('/:id', playerValidationRules(), validate, playerController.getPlayerById);
 
 /**
  * @swagger
- * /student:
+ * /player:
  *   post:
- *     summary: Create a new student
+ *     summary: Create a new player
  *     requestBody:
  *       required: true
  *       content:
@@ -58,36 +58,38 @@ router.get('/:id', studentValidationRules(), validate, studentController.getStud
  *                 type: string
  *               lastName:
  *                 type: string
+ *               countryName:
+ *                 type: string
+ *               clubName:
+ *                 type: string
  *               age:
  *                 type: number
- *               favoriteSubject:
+ *               position:
  *                 type: string
- *               grade:
- *                 type: string
- *               email:
- *                 type: string
+ *               goals:
+ *                 type: number
  *     responses:
  *       201:
- *         description: The created student
+ *         description: The created player
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  */
-router.post('/', studentValidationRules(), validate, studentController.createStudent);
+router.post('/', playerValidationRules(), validate, playerController.createPlayer);
 
 /**
  * @swagger
- * /student/{id}:
+ * /player/{id}:
  *   put:
- *     summary: Update a student by ID
+ *     summary: Update a player by ID
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The student ID
+ *         description: The player ID
  *     requestBody:
  *       required: true
  *       content:
@@ -99,44 +101,46 @@ router.post('/', studentValidationRules(), validate, studentController.createStu
  *                 type: string
  *               lastName:
  *                 type: string
+ *               countryName:
+ *                 type: string
+ *               clubName:
+ *                 type: string
  *               age:
  *                 type: number
- *               favoriteSubject:
+ *               position:
  *                 type: string
- *               grade:
- *                 type: string
- *               email:
- *                 type: string
+ *               goals:
+ *                 type: number
  *     responses:
  *       200:
- *         description: The updated student
+ *         description: The updated player
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  */
-router.put('/:id', studentValidationRules(), validate, studentController.updateStudent);
+router.put('/:id', playerValidationRules(), validate, playerController.updatePlayer);
 
 /**
  * @swagger
- * /student/{id}:
+ * /player/{id}:
  *   delete:
- *     summary: Delete a student by ID
+ *     summary: Delete a player by ID
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: The student ID
+ *         description: The player ID
  *     responses:
  *       200:
- *         description: A message indicating the student was deleted
+ *         description: A message indicating the player was deleted
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  */
-router.delete('/:id', studentValidationRules(), validate, studentController.deleteStudent);
+router.delete('/:id', playerValidationRules(), validate, playerController.deletePlayer);
 
 module.exports = router;

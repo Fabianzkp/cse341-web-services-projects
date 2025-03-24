@@ -4,6 +4,7 @@ const connectDB = require("./data/database");
 const app = express();
 const bodyParser = require('body-parser');
 const { swaggerUi, swaggerSpec } = require('./swagger');
+const routes = require("./routes/index");
 const studentRoutes = require('./routes/studentRoutes');
 const playerRoutes = require('./routes/playerRoutes');
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
+app.use("/", routes);
 app.use('/student', studentRoutes);
 app.use('/player', playerRoutes);
 

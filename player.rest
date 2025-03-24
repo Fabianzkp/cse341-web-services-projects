@@ -27,11 +27,11 @@ Content-Type: application/json
 ###
 
 # Update a player by ID (partial update)
-PUT http://localhost:3000/player/67db44525105ae973fd9b873
+PUT http://localhost:3000/player/67e194aefe129b1f564485be
 Content-Type: application/json
 
 {
-  "clubName": "Inter Milan"
+  "clubName": ""
 }
 
 ###

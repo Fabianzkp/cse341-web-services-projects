@@ -30,7 +30,8 @@ const validate = (req, res, next) => {
   if (errors.isEmpty()) {
     return next();
   }
-  return res.status(400).json({ errors: errors.array() });
+  const firstError = errors.array()[0].msg; // Extract the first error message
+  return res.status(400).json({ errors: firstError });
 };
 
 module.exports = {

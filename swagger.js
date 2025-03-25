@@ -30,7 +30,12 @@ const options = {
     },
     security: [{ apiKeyAuth: [] }], // Apply API key authentication globally
   },
-  apis: ["./routes/*.js"], // Path to the API docs
+  // apis: ["./routes/*.js"], // Path to the API docs
+  apis: [
+    "./routes/index.js",
+    "./routes/playerRoutes.js",
+    "./routes/studentRoutes.js",
+  ],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

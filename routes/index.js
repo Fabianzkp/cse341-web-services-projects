@@ -1,7 +1,24 @@
-// This file is the main router for the application. It will contain all the routes for the application.
 const router = require("express").Router();
-const lessonController = require("../controllers/project1");
 
-router.get("/", lessonController.greet);
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Welcome page
+ *     responses:
+ *       200:
+ *         description: Returns a welcome message based on authentication status
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ */
+router.get("/", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.send(`Welcome, ${req.user.username || 'User'}! <a href="/auth/logout">Logout</a>`);
+  } else {
+    res.send('Welcome to my CSE341 - WEB SERVICES PERSONAL PROJECT API! <a href="/auth/github">Login with GitHub</a>');
+  }
+});
 
-module.exports = router; // Export the routes to be used in server.js
+module.exports = router;

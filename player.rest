@@ -5,7 +5,7 @@ Accept: application/json
 ###
 
 # Get a single player by ID
-GET http://localhost:3000/player/67db400c6dbb6b4f6b42ec2f
+GET http://localhost:3000/player/67e302dd06e321393c2ec78a
 Accept: application/json
 
 ###
@@ -27,11 +27,12 @@ Content-Type: application/json
 ###
 
 # Update a player by ID (partial update)
-PUT http://localhost:3000/player/67e194aefe129b1f564485be
+PUT http://localhost:3000/player/67e302dd06e321393c2ec78a
 Content-Type: application/json
 
 {
-  "clubName": ""
+  "firstName": "Smart",
+  "clubName": "Real Madrid"
 }
 
 ###

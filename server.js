@@ -36,8 +36,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes
 app.use("/", routes);
-app.use('/student',  studentRoutes);
-app.use('/player',  playerRoutes);
+app.use('/student', ensureAuthenticated, studentRoutes);
+app.use('/player',  ensureAuthenticated, playerRoutes);
 app.use("/auth", authRoutes);
 
 
